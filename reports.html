@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/reports.css">
+    <title>Generate Reports</title>
+</head>
+<body>
+    <h1>Generate Reports</h1>
+
+    <div id="reportTypeSection">
+        <label for="reportTypeDropdown">Choose Report Type:</label>
+        <select id="reportTypeDropdown">
+            <option value="">Select Category</option>
+            <option value="Customer Reports">Customer Reports</option>
+            <option value="Inventory Reports">Inventory Reports</option>
+            <option value="Sales Reports">Sales Reports</option>
+        </select>
+    </div>
+
+    <div id="reportOptions"></div>
+
+    <div id="datePickers" style="display: none;">
+        <label for="fromDate">From Date:</label>
+        <input type="date" id="fromDate">
+        <label for="toDate">To Date:</label>
+        <input type="date" id="toDate">
+    </div>
+
+    <button id="generateReportButton" style="display: none;">Generate Report</button>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="js/config.js"></script>
+
+    <script src="js/reports.js"></script>
+
+</body>
+</html>

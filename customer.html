@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/customer.css">
+    <title>Customer Shop</title>
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <div class="header-content">
+            <h1>Online Store</h1>
+            <input type="text" id="searchBar" placeholder="Search items..." />
+            <select id="categoryDropdown">
+                <option value="">Select Category</option>
+                <!-- Categories will be populated dynamically -->
+            </select>
+            <div class="header-buttons">
+                <button id="cartBtn"> Cart</button>
+                <button id="orderHistoryBtn"> Order History</button>
+            </div>
+        </div>
+    </header>
+
+    
+    <!-- Main Content -->
+    <main>
+        <h2>Featured Products</h2>
+        <div id="itemsContainer"></div> <!-- Items will be dynamically loaded -->
+        <div id="paginationContainer"></div> <!-- Pagination container -->
+    </main>
+
+    <!-- Footer Section -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-links">
+            <p>&copy; 2024 Online Store. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="js/config.js"></script>
+    <script src="js/customer.js"></script>
+</body>
+</html>

@@ -1,0 +1,112 @@
+/* General styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4; /* Matching background color */
+}
+
+header {
+    background-color: #333; /* Dark color for the header */
+    text-align: center;
+    color: white;
+}
+
+h2 {
+    margin: 0;
+    font-size: 32px; /* Increased header text size */
+    font-family: "Cursive", "Fantasy", "Georgia"; /* Fancy font */
+}
+
+main {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#ordersContainer {
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center align order cards */
+    gap: 20px;
+}
+
+.order-card {
+    background-color: white; /* Card background color */
+    border: 1px solid #ccc; /* Border color */
+    border-radius: 10px; /* Rounded corners */
+    padding: 20px;
+    width: 100%;
+    max-width: 600px; /* Ensure that the cards don't become too wide */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Card shadow */
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center align the content inside the card */
+    transition: transform 0.3s, box-shadow 0.3s; /* Transition for hover effect */
+}
+
+.order-card:hover {
+    transform: scale(1.05); /* Scale effect on hover */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15); /* Shadow effect on hover */
+}
+
+.order-header {
+    font-weight: bold;
+    margin-bottom: 10px;
+    justify-content: space-between;
+}
+
+.order-items {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center; /* Center align item cards */
+}
+
+.item-card {
+    border: 1px solid #ddd; /* Border color for item cards */
+    border-radius: 5px; /* Rounded corners */
+    padding: 5px;
+    width: 150px; /* Fixed width */
+    text-align: center;
+    background-color: #fff; /* Item card background color */
+}
+
+.item-card img {
+    width: 100%;
+    height: 100px; /* Fixed height for images */
+    object-fit: cover; /* Maintain aspect ratio */
+    border-radius: 5px; /* Rounded corners for images */
+}
+
+/* Pagination styles */
+#paginationContainer {
+    margin-top: 10px;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+#pagination button {
+    margin: 0 5px;
+    padding: 10px 15px;
+    border: none;
+    background-color: #333; /* Same color as header */
+    color: white;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+#pagination button:disabled {
+    background-color: #CCCCCC; /* Disabled button color */
+    cursor: not-allowed; /* Not allowed cursor for disabled buttons */
+}
+
+/* Footer styles (optional, if needed) */
+footer {
+    background-color: #333; /* Same color as header */
+    color: white;
+    padding: 20px;
+    text-align: center;
+}

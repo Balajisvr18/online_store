@@ -1,0 +1,101 @@
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4; /* Light background for consistency */
+}
+
+header {
+    background-color: #333; /* Dark color for the header */
+    text-align: center;
+    color: white;
+}
+
+h2 {
+    margin: 0;
+    font-size: 32px; /* Increased header text size */
+    font-family: "Cursive", "Fantasy", "Georgia"; /* Fancy font */
+}
+
+main {
+    padding: 20px;
+}
+
+#cartItemsContainer {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: space-around;
+}
+
+/* Card Styles */
+.card {
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    padding: 15px;
+    text-align: center;
+    width: 200px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: white; /* Background for cards */
+    transition: transform 0.3s, box-shadow 0.3s; /* Transition effects */
+}
+
+.card:hover {
+    transform: scale(1.05); /* Hover effect */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.card img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+.card input[type="number"] {
+    width: 50px;
+ }
+
+/* Button Styles */
+.card button {
+    padding: 10px;
+    background-color:  #333; /* Same color scheme as customer.css */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.card button:hover {
+    background-color: #333; /* Hover effect */
+}
+
+/* Footer Styles */
+footer {
+    background-color: #f1f1f1; /* Light footer color */
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+}
+
+footer button {
+    padding: 10px 20px;
+    background-color: #333; /* Same color as header */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+footer button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+#totalAmount {
+    font-size: 20px; /* Larger font for total amount */
+    font-weight: bold; /* Bold text */
+    margin-top: 10px;
+    text-align: center; /* Center the total amount text */
+}

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/admin.css">
+    <link rel="stylesheet" href="css/reports.css">
+
+    <title>Admin Inventory Management</title>
+</head>
+<body>
+    <div class="container">
+        <h2>Admin Management</h2>
+        <div id="options" class="button-row">
+            <button id="createItemBtn">Create Item</button>
+            <button id="readItemsBtn">Read Items</button>
+            <button id="readByCategoryBtn">Read by Category</button> <!-- New Button -->
+            <button id="readByNameBtn">Read by Name</button> <!-- New Button -->
+            <button id="updateItemBtn">Update Item</button>
+            <button id="deleteItemBtn">Delete Item</button>
+            <button id="editCreditBtn">Edit Credit Score</button>
+            <button id="reportsBtn">Reports</button>
+        </div>
+        
+        <div id="paginationContainer"></div>
+        <div id="formContainer"></div>
+        <div id="itemsList"></div>
+        
+        <div id="reportTypeSection" style="display: none;">
+        <label for="reportTypeDropdown">Choose Report Type:</label>
+        <select id="reportTypeDropdown">
+            <option value="">Select Category</option>
+            <option value="Customer Reports">Customer Reports</option>
+            <option value="Inventory Reports">Inventory Reports</option>
+            <option value="Sales Reports">Sales Reports</option>
+        </select>
+    </div>
+
+    <div id="reportOptions"></div>
+
+    <div id="datePickers" style="display: none;">
+        <label for="fromDate">From Date:</label>
+        <input type="date" id="fromDate"><br><br/>
+        <label for="toDate">To Date:</label>
+        <input type="date" id="toDate">
+    </div>
+
+    <button id="generateReportButton" style="display: none;">Generate Report</button>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-csv/1.0.11/jquery.csv.min.js"></script>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="js/config.js"></script>
+
+    <script src="js/admin.js"></script>
+    <script src="js/reports.js"></script>
+
+</body>
+</html>

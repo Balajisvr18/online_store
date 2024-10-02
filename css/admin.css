@@ -1,0 +1,158 @@
+/* Main container styles */
+.container {
+    width: 100%;
+    max-width: 1000px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+    text-align: center;
+    margin-bottom: 25px;
+    color: #333;
+    font-weight: 600;
+    font-size: 1.8rem;
+}
+
+/* Button row: 4 buttons per row with smaller size */
+.button-row {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+button {
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.9rem; /* Smaller font size */
+    align-self: center; /* Center the button */
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center all elements in the form */
+}
+
+label {
+    margin-bottom: 5px;
+    font-size: 0.9rem; /* Smaller font size for labels */
+    text-align: center; /* Center the label text */
+    display: inline-block; /* Ensure label takes only necessary width */
+}
+
+input, select {
+    padding: 10px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    width: 100%; /* Make input fields full width */
+    max-width: 300px; /* Limit maximum width for inputs */
+    text-align: center; /* Center the label text */
+
+}
+.checkbox-container {
+    display: flex;
+    align-items: center; /* Align checkbox and label vertically */
+    width: 250px; /* Set a specific width for the container */
+    justify-content: center; /* Center the container contents */
+}
+
+.checkbox-container input[type="checkbox"] {
+    width:50px;
+    margin-right: 5px; /* Reduce the margin between checkbox and label */
+    margin-left: 0; /* Optional: Remove any left margin */
+}
+
+/* Optional: Center text in the label if needed */
+.checkbox-container label {
+    flex-grow: 1; /* Allows the label to take up remaining space */
+    text-align: left; /* Align text to the left */
+}
+
+
+
+.error {
+    color: red;
+    margin-bottom: 10px;
+}
+
+/* Pagination container styles */
+#paginationContainer {
+    margin-top: 25px;
+    text-align: center;
+}
+
+#pagination button {
+    margin: 0 5px;
+    padding: 12px 18px;
+    font-size: 0.95rem;
+    border: none;
+    background-color: #007BFF;
+    color: white;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+#pagination button:disabled {
+    background-color: #CCCCCC;
+    cursor: not-allowed;
+}
+
+#pagination button:hover {
+    background-color: #0056b3;
+}
+
+/* Item cards layout */
+#itemsList {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    gap: 20px;
+}
+
+.card {
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    padding: 15px;
+    margin: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 250px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.card-img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+.card-content {
+    text-align: center;
+}
+
+.card-content h4 {
+    margin: 10px 0;
+}
+
+.card-content p {
+    margin: 5px 0;
+}
