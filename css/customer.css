@@ -40,9 +40,6 @@ header h1 {
 
 /* Cart and Order History buttons */
 .header-buttons {
-    position: absolute;
-    top: 20px;
-    right: 20px;
     display: flex;
     gap: 10px;
 }
@@ -61,7 +58,23 @@ header h1 {
     background-color: #444;
 }
 
+/* Promo Banner */
+#promo-banner {
+    background: url('https://via.placeholder.com/1500x300') no-repeat center center/cover;
+    color: white;
+    text-align: center;
+    padding: 50px;
+}
 
+#promo-banner .promo-text h2 {
+    font-size: 2.5em;
+    margin: 0;
+}
+
+#promo-banner .promo-text p {
+    font-size: 1.2em;
+    margin: 10px 0;
+}
 
 /* Main Content */
 main {
@@ -184,7 +197,7 @@ footer {
     }
 
     header h1 {
-        font-size: 28px; /* Adjust font size for smaller screens */
+        font-size: 28px;
     }
 
     .header-buttons {
@@ -194,30 +207,35 @@ footer {
         margin-top: 10px;
     }
 
+    /* Shrink search bar and category dropdown for small screens */
+    #searchBar, #categoryDropdown {
+        width: 70%;
+    }
+
     #promo-banner {
-        padding: 40px 20px; /* Reduce padding for smaller screens */
+        padding: 40px 20px;
     }
 
     #promo-banner .promo-text h2 {
-        font-size: 2em; /* Adjust promo text size */
+        font-size: 2em;
     }
 
     #promo-banner .promo-text p {
-        font-size: 1em; /* Adjust promo sub-text size */
+        font-size: 1em;
     }
 
     #itemsContainer {
-        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); /* Reduce min column size */
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
     }
 
     .card img {
-        height: 120px; /* Adjust image size */
+        height: 120px;
     }
 }
 
 @media (max-width: 480px) {
     header h1 {
-        font-size: 24px; /* Smaller font for very small screens */
+        font-size: 24px;
     }
 
     .header-buttons {
@@ -226,12 +244,17 @@ footer {
         gap: 5px;
     }
 
+    #searchBar, #categoryDropdown {
+        width: 700%; /* Full width on smaller screens */
+        padding: 4px;
+    }
+
     #promo-banner {
-        padding: 30px 10px; /* Further reduce padding */
+        padding: 30px 10px;
     }
 
     #promo-banner .promo-text h2 {
-        font-size: 1.8em; /* Smaller text for very small screens */
+        font-size: 1.8em;
     }
 
     #promo-banner .promo-text p {
@@ -239,11 +262,11 @@ footer {
     }
 
     #itemsContainer {
-        grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); /* Even smaller column width */
+        grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
     }
 
     .card img {
-        height: 100px; /* Reduce image size for small screens */
+        height: 100px;
     }
 
     .card h3 {
@@ -251,12 +274,12 @@ footer {
     }
 
     .card button {
-        font-size: 14px; /* Smaller button text */
-        padding: 8px; /* Adjust button padding */
+        font-size: 14px;
+        padding: 8px;
     }
 
     footer {
         padding: 10px;
-        font-size: 14px; /* Reduce font size for footer */
+        font-size: 14px;
     }
 }
