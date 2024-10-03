@@ -63,8 +63,6 @@ $('#googleSignInButton').click(async function (e) {
 
     auth.signInWithPopup(provider)
         .then(function (result) {
-            // Display success message
-            alert('Google Sign-In Successful!');
 
             // Get signed-in user ID
             const userId = result.user.uid;
@@ -82,10 +80,8 @@ $('#googleSignInButton').click(async function (e) {
 
                     // Redirect based on user role or email
                     if (userEmail === 'lkamala1971@gmail.com') {
-                        alert(`Welcome Admin!`);
                         window.location.href = 'admin.html'; // Redirect to admin page
                     }else {
-                        alert(`Welcome ${userName}`);
                             window.location.href = 'customer.html';
                     }
                  } 
