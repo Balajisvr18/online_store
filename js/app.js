@@ -55,51 +55,50 @@ $(document).ready(function () {
                 console.error('Error:', error.message);
             });
     });
-   // Sign Up Form Submission
+// Google Sign-In
 $('#googleSignInButton').click(async function (e) {
     e.preventDefault();
 
-    const googleSignInButton = document.getElementById('googleSignInButton');
-    googleSignInButton.addEventListener('click', () => {
-        const provider = new firebase.auth.GoogleAuthProvider();
+    const provider = new firebase.auth.GoogleAuthProvider();
 
-        auth.signInWithPopup(provider)
-            .then((result) => {
-                const user = result.user;
-                const userEmail = user.email;
+    auth.signInWithPopup(provider)
+        .then(function (result) {
+            // Display success message
+            alert('Google Sign-In Successful!');
 
-                // Check if user exists in Firestore and update or merge data
-                const docRef = db.collection('customer').doc(user.uid);
-                docRef.set({
-                    email: user.email,
-                    firstName: user.displayName.split(' ')[0],  // Use Google's displayName
-                    lastName: user.displayName.split(' ')[1] || '', // Last name might be absent
-                    mobile_number: '',    // You might need to collect this manually
-                    credit_score: 0,       // Default credit score
-                    role: 'user'           // Default role for all new users
-                }, { merge: true }) // Merge to avoid overwriting existing data
-                .then(() => {
-                    // Display success message and store logged-in user ID locally
-                    alert('Google Sign-In Successful!');
-                    sessionStorage.setItem('customerEmail', user.uid.email);
+            // Get signed-in user ID
+            const userId = result.user.uid;
+            const userEmail = result.user.email;
 
-                    // Redirect based on email condition
+            // Fetch user details from Firestore
+            db.collection('customer').doc(userId).get().then(function (doc) {
+                if (doc.exists) {
+                    const userRole = doc.data().role; // Assuming 'role' field exists in Firestore
+                    const userName = doc.data().name;
+
+                    // Store userId and userRole in sessionStorage
+                 
+                    sessionStorage.setItem('customerEmail', userEmail); // Store email in sessionStorage
+
+                    // Redirect based on user role or email
                     if (userEmail === 'lkamala1971@gmail.com') {
-                        window.location.href = 'admin.html'; // Specific email redirects to homepage
-                    } else {
-                        window.location.href = 'customer.html'; // Other users redirect elsewhere
+                        alert(`Welcome Admin!`);
+                        window.location.href = 'admin.html'; // Redirect to admin page
+                    }else {
+                        alert(`Welcome ${userName}`);
+                            window.location.href = 'customer.html';
                     }
-                })
-                .catch((error) => {
-                    console.error("Error saving user to Firestore: ", error);
-                });
-            })
-            .catch((error) => {
-                console.error('Error during Google Sign-In: ', error);
-                alert('Google Sign-In failed');
+                 } 
+            }).catch(function (error) {
+                console.error('Error getting user document:', error);
             });
-    });
+        })
+        .catch(function (error) {
+            console.error('Error during Google Sign-In: ', error);
+            alert('Google Sign-In failed: ' + error.message);
+        });
 });
+
 
     // Sign Up Form Submission
     $('#signUpForm').submit(async function (e) {
