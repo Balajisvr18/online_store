@@ -1,3 +1,4 @@
+
 $(document).ready(function () {
     $("#reportTypeDropdown").change(function () {
         const reportType = $(this).val();
@@ -120,7 +121,7 @@ function displayInventoryReportOptions() {
 
 function generateTopCustomersReport(fromDate, toDate) {
     $.ajax({
-        url:  `https://firestore.googleapis.com/v1/projects/online-store-95b4f/databases/(default)/documents/order_history`,
+        url: `${apiUrl}order_history`,
         type: 'GET',
         success: function (response) {
             let customers = [];
@@ -154,7 +155,7 @@ function generateTopCustomersReport(fromDate, toDate) {
 }
 function generateAllCustomer(){
     $.ajax({
-        url:  `https://firestore.googleapis.com/v1/projects/online-store-95b4f/databases/(default)/documents/order_history`,
+        url: `${apiUrl}order_history`,
         type: 'GET',
         success: function (response) {
             let customers = [];
@@ -183,7 +184,7 @@ function generateAllCustomer(){
 }
 function generateCashPurchaseReport(fromDate, toDate) {
     $.ajax({
-        url: `https://firestore.googleapis.com/v1/projects/online-store-95b4f/databases/(default)/documents/order_history`,
+        url: `${apiUrl}order_history`,
         type: 'GET',
         success: function (response) {
             let customers = [];
@@ -222,7 +223,7 @@ function generateCashPurchaseReport(fromDate, toDate) {
 
 function generateCreditPurchaseReport(fromDate, toDate) {
     $.ajax({
-        url: `https://firestore.googleapis.com/v1/projects/online-store-95b4f/databases/(default)/documents/order_history`,
+        url: `${apiUrl}order_history`,
         type: 'GET',
         success: function (response) {
             let customers = [];
@@ -262,7 +263,7 @@ function generateCreditPurchaseReport(fromDate, toDate) {
 
 function generateInventoryReport() {
     $.ajax({
-        url:  `https://firestore.googleapis.com/v1/projects/online-store-95b4f/databases/(default)/documents/inventory`,
+        url: `${apiUrl}inventory`, // API endpoint for fetching inventory items
         type: 'GET',
         success: function (response) {
             let csvContent = "data:text/csv;charset=utf-8,Item Name,Available Quantity\n";
@@ -281,7 +282,7 @@ function generateInventoryReport() {
 function generateCategoryWiseInventoryReport() {
     // Step 1: Fetch categories from the category table
     $.ajax({
-        url: `https://firestore.googleapis.com/v1/projects/online-store-95b4f/databases/(default)/documents/category`,
+        url: `${apiUrl}category`,
         type: 'GET',
         success: function (categoryResponse) {
             // Create a map of category_id to category_name
@@ -294,7 +295,7 @@ function generateCategoryWiseInventoryReport() {
 
             // Step 2: Fetch inventory from the inventory table
             $.ajax({
-                url: `https://firestore.googleapis.com/v1/projects/online-store-95b4f/databases/(default)/documents/inventory`,
+                url: `${apiUrl}inventory`, // API endpoint for fetching inventory items
                 type: 'GET',
                 success: function (inventoryResponse) {
                     let csvContent = "data:text/csv;charset=utf-8,Item Name,Category Name,Available Quantity\n";
@@ -328,7 +329,7 @@ function generateCategoryWiseInventoryReport() {
 function generateHighStockReport() {
     // Fetch inventory from the inventory table
     $.ajax({
-        url: `https://firestore.googleapis.com/v1/projects/online-store-95b4f/databases/(default)/documents/inventory`,
+        url: `${apiUrl}inventory`, // API endpoint for fetching inventory items
         type: 'GET',
         success: function (inventoryResponse) {
             let csvContent = "data:text/csv;charset=utf-8,Item Name,Available Quantity\n";
@@ -355,7 +356,7 @@ function generateHighStockReport() {
 function generateLowStockReport() {
     // Fetch inventory from the inventory table
     $.ajax({
-        url: `https://firestore.googleapis.com/v1/projects/online-store-95b4f/databases/(default)/documents/inventory`,
+        url: `${apiUrl}inventory`, // API endpoint for fetching inventory items
         type: 'GET',
         success: function (inventoryResponse) {
             let csvContent = "data:text/csv;charset=utf-8,Item Name,Available Quantity\n";
@@ -381,7 +382,7 @@ function generateLowStockReport() {
 
 function generateSalesReport(fromDate, toDate, str) {
     $.ajax({
-        url: `https://firestore.googleapis.com/v1/projects/online-store-95b4f/databases/(default)/documents/order_history`,
+        url: `${apiUrl}order_history`,
         method: 'GET',
         success: function (response) {
             let csvContent = "data:text/csv;charset=utf-8,Email,Amount,Payment Method,Date\n";
@@ -414,7 +415,7 @@ function generateSalesReport(fromDate, toDate, str) {
 function generateSalesCategoryReport(fromDate, toDate) {
     // Step 1: Fetch all inventory data to get item details including category
     $.ajax({
-        url: `https://firestore.googleapis.com/v1/projects/online-store-95b4f/databases/(default)/documents/inventory`,
+        url: `${apiUrl}inventory`, // API endpoint for fetching inventory items
         method: 'GET',
         dataType: 'json',
         success: function (inventoryData) {
@@ -432,7 +433,7 @@ function generateSalesCategoryReport(fromDate, toDate) {
 
             // Step 2: Fetch all category data to get category names
             $.ajax({
-                url: `https://firestore.googleapis.com/v1/projects/online-store-95b4f/databases/(default)/documents/category`,
+                url: `${apiUrl}category`,
                 method: 'GET',
                 dataType: 'json',
                 success: function (categoryData) {
@@ -446,7 +447,7 @@ function generateSalesCategoryReport(fromDate, toDate) {
 
                     // Step 3: Fetch all order history data to calculate sales per category
                     $.ajax({
-                        url: `https://firestore.googleapis.com/v1/projects/online-store-95b4f/databases/(default)/documents/order_history`,
+                        url: `${apiUrl}order_history`,
                         method: 'GET',
                         dataType: 'json',
                         success: function (orderHistoryData) {
@@ -510,7 +511,7 @@ function generateSalesCategoryReport(fromDate, toDate) {
 }
 function generateTopSellingItemsReport(fromDate, toDate) {
     $.ajax({
-        url: `https://firestore.googleapis.com/v1/projects/online-store-95b4f/databases/(default)/documents/order_history`,
+        url: `${apiUrl}order_history`,
         method: 'GET',
         success: function (response) {
             let itemSales = {};
@@ -543,7 +544,7 @@ function generateTopSellingItemsReport(fromDate, toDate) {
 
             // Fetch item details from inventory
             $.ajax({
-                url: `https://firestore.googleapis.com/v1/projects/online-store-95b4f/databases/(default)/documents/inventory`,
+                url: `${apiUrl}inventory`, // API endpoint for fetching inventory items
                 method: 'GET',
                 success: function (inventoryResponse) {
                     let csvContent = "data:text/csv;charset=utf-8,Item Name,Quantity Sold\n";
@@ -568,7 +569,7 @@ function generateTopSellingItemsReport(fromDate, toDate) {
 }
 function generateBottomSellingItemsReport(fromDate, toDate) {
     $.ajax({
-        url: `https://firestore.googleapis.com/v1/projects/online-store-95b4f/databases/(default)/documents/order_history`,
+        url: `${apiUrl}order_history`,
         method: 'GET',
         success: function (response) {
             let itemSales = {};
@@ -601,7 +602,7 @@ function generateBottomSellingItemsReport(fromDate, toDate) {
 
             // Fetch item details from inventory
             $.ajax({
-                url: `https://firestore.googleapis.com/v1/projects/online-store-95b4f/databases/(default)/documents/inventory`,
+                url: `${apiUrl}inventory`, // API endpoint for fetching inventory items
                 method: 'GET',
                 success: function (inventoryResponse) {
                     let csvContent = "data:text/csv;charset=utf-8,Item Name,Quantity Sold\n";
