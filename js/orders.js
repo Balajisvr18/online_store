@@ -28,7 +28,7 @@ function fetchOrderHistory() {
         },
         error: function (error) {
             console.error('Error fetching order history:', error);
-            $('#ordersContainer').html('<p>Error fetching orders.</p>');
+            $('#ordersContainer').html('<p>No orders found.</p>');
         }
     });
 }
