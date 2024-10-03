@@ -56,53 +56,51 @@ $(document).ready(function () {
             });
     });
     // Sign Up Form Submission
-    $('#googleSignInButton').submit(async function (e) {
-        e.preventDefault();
+$('#googleSignInButton').click(async function (e) {
+    e.preventDefault();
 
-        const name = $('#name').val();
-        const email = $('#email').val();
-        const password = $('#password').val();
-        const confirmPassword = $('#confirmPassword').val();
-        const mobile = $('#mobile').val();
+    const googleSignInButton = document.getElementById('googleSignInButton');
+    googleSignInButton.addEventListener('click', () => {
+        const provider = new firebase.auth.GoogleAuthProvider();
 
-        if (password !== confirmPassword) {
-            alert("Passwords don't match!");
-            return;
-        }
+        auth.signInWithPopup(provider)
+            .then((result) => {
+                const user = result.user;
+                const userEmail = user.email;
 
-        // Auto-increment customer_id from your Firestore counters table
-        const newCustomerId = await getNewId(apiUrl, 'customer_counter');
+                // Check if user exists in Firestore and update or merge data
+                const docRef = db.collection('customer').doc(user.uid);
+                docRef.set({
+                    email: user.email,
+                    firstName: user.displayName.split(' ')[0],  // Use Google's displayName
+                    lastName: user.displayName.split(' ')[1] || '', // Last name might be absent
+                    mobile_number: '',    // You might need to collect this manually
+                    credit_score: 0,       // Default credit score
+                    role: 'user'           // Default role for all new users
+                }, { merge: true }) // Merge to avoid overwriting existing data
+                .then(() => {
+                    // Display success message and store logged-in user ID locally
+                    alert('Google Sign-In Successful!');
+                    sessionStorage.setItem('customerEmail', user.uid.email);
 
-        // Firebase Authentication: Create user with email and password
-        auth.createUserWithEmailAndPassword(email, password)
-            .then(function (userCredential) {
-                var user = userCredential.user; // Get Firebase user object
-
-                // Prepare user data for Firestore
-                var userData = {
-                    customer_id: newCustomerId,   // Auto-incremented customer ID
-                    name: name,
-                    email: email,
-                    mobile_number: mobile,
-                    credit_score: 0,
-                    role: 'user'                 // Default role for all new users
-                };
-
-                // Save user data to Firestore customer collection
-                db.collection('customer').doc(user.uid).set(userData)
-                    .then(function () {
-                        alert('Sign Up Successful! Please check your email.');
-                        window.location.href = 'index.html'; // Redirect to the login page
-                    })
-                    .catch(function (error) {
-                        console.error('Error saving user to Firestore:', error);
-                    });
+                    // Redirect based on email condition
+                    if (userEmail === 'lkamala1971@gmail.com') {
+                        window.location.href = 'admin.html'; // Specific email redirects to homepage
+                    } else {
+                        window.location.href = 'customer.html'; // Other users redirect elsewhere
+                    }
+                })
+                .catch((error) => {
+                    console.error("Error saving user to Firestore: ", error);
+                });
             })
-            .catch(function (error) {
-                alert('Error during sign-up: ' + error.message);
-                console.log('Error:', error);
+            .catch((error) => {
+                console.error('Error during Google Sign-In: ', error);
+                alert('Google Sign-In failed');
             });
     });
+});
+
 
     // Sign Up Form Submission
     $('#signUpForm').submit(async function (e) {
